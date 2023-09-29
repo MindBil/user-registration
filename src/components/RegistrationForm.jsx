@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import GoogleLoginButton from "./GoogleLoginButton";
@@ -21,8 +22,11 @@ const RegistrationForm = () => {
       .required("Password is required"),
   });
 
+  const [registrationCompleted, setRegistrationCompleted] = useState(false);
+
   const handleSubmit = (values) => {
     console.log("Form submitted with values:", values);
+    setRegistrationCompleted(true);
   };
 
   return (
@@ -31,6 +35,7 @@ const RegistrationForm = () => {
         <img
           src="https://media.istockphoto.com/id/823730304/vector/log-in-page-on-smartphone-screen.jpg?s=612x612&w=0&k=20&c=eL5umxRX9akdPyU1EY8xiK9TiTnokqrqAspKbxqzDus="
           className="registration-image"
+          alt="Registration"
         />
       </div>
       <div className="right-section">
@@ -39,7 +44,7 @@ const RegistrationForm = () => {
           <GoogleLoginButton />
           <FacebookLoginButton />
         </div>
-        <h3 className="custom-font">Or</h3>{" "}
+        <h3 className="custom-font">Or</h3>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -78,6 +83,11 @@ const RegistrationForm = () => {
             </div>
           </Form>
         </Formik>
+        {registrationCompleted && (
+          <div className="registration-completed-message">
+            Registration completed!
+          </div>
+        )}
       </div>
     </div>
   );
