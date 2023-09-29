@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    height: 72vh;
+    height: 75vh;
     border: 3px solid orange;
     border-radius: 8px;
     margin-top: 5rem;
